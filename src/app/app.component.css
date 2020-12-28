@@ -1,0 +1,15 @@
+.img{
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 3px;
+    width: 80px;
+      
+}
+.text{
+    vertical-align:middle;
+}
+.name{
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: blue;
+}

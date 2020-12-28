@@ -1,1 +1,60 @@
-<app-mangas></app-mangas>
+<h1 class="name">Naruto Shipudden</h1><br/>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">characteristics</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><img src="../../../assets/images/naruto.jpg" alt="Naruto Uzumaki" class="img"></td>
+      <td class="text">Naruto UZUMAKI</td>
+      <td class="text">Demon renard</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td><img src="../../../assets/images/sasuke.png" alt="Sasuke UCHIHA" class="img"></td>
+      <td class="text">Sasuke UCHIHA</td>
+      <td class="text">Sharingan</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td><img src="../../../assets/images/hinata.png" alt="Naruto Uzumaki" class="img"></td>
+      <td class="text">Hinata HYUGA</td>
+      <td class="text">Byakugan</td>
+    </tr>
+  </tbody>
+</table>
+<div>
+    <!-- this header tag displays only when user is logged-in -->
+    <h1 *ngIf="authService.user | async">
+        Welcome User: {{ (authService.user | async)?.email }}!
+    </h1>
+
+    <!-- this div displays only when user is not-logged-in -->
+    <div *ngIf="!(authService.user | async)">
+        <!-- these input fields takes email and password from user -->
+        <input type="text" [(ngModel)]="email" placeholder="Enter email"/>
+        <input type="password" [(ngModel)]="password" placeholder="Enter password"/>
+
+        <!-- user click this button to signup -->
+        <button (click)="signup()" [disabled]="!email || !password">
+            Signup
+        </button>
+
+        <!-- user click this button to login -->
+        <button (click)="login()" [disabled]="!email || !password">
+            Login
+        </button>
+    </div>
+
+    <!-- user click this button to logout -->
+    <!-- this button displays only when user is logged-in -->
+    <button (click)="logout()" *ngIf="authService.user | async">
+        Logout
+    </button>
+</div>
